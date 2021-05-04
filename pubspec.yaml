@@ -14,27 +14,25 @@ dependencies:
     sdk: flutter
 
   datetime_picker_formfield: ^2.0.0
-  dropdown_search: ^0.5.0
+  dropdown_search: ^0.6.1
   flutter_colorpicker: ^0.4.0
   flutter_chips_input: ^1.9.5
-  flutter_datetime_picker: ^1.5.0
+  flutter_datetime_picker: ^1.5.1
   flutter_touch_spin: ^2.0.0-nullsafety.1
-  flutter_typeahead: ^3.1.0
+  flutter_typeahead: ^3.1.2
   intl: ^0.17.0
   rating_bar: ^0.2.0
-  signature: ^3.2.1
-  validators: ^2.0.1
+  signature: ^4.0.2
+  validators: ^3.0.0
 
-# dependency_overrides:
-  # intl: ^0.17.0
+dependency_overrides:
+  image: ^3.0.2
+  xml: ^5.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # flutter pub pub run intl_translation:extract_to_arb --output-dir=lib/l10n lib/localization/form_builder_localizations.dart
-  # flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/l10n --no-use-deferred-loading lib/localization/form_builder_localizations.dart lib/l10n/intl_*.arb
-  intl_translation: ^0.17.10+1
   pedantic: ^1.11.0
 
 flutter:

@@ -193,7 +193,7 @@ class FormBuilderSearchableDropdown<T> extends FormBuilderField<T> {
                 //Hack to rebuild when didChange is called
                 key: ValueKey(state.value),
                 items: items,
-                maxHeight: 300,
+                maxHeight: maxHeight,
                 onFind: onFind,
                 onChanged: (val) {
                   state.requestFocus();
@@ -254,4 +254,12 @@ class FormBuilderSearchableDropdown<T> extends FormBuilderField<T> {
 }
 
 class _FormBuilderSearchableDropdownState<T>
-    extends FormBuilderFieldState<FormBuilderSearchableDropdown<T>, T> {}
+    extends FormBuilderFieldState<FormBuilderSearchableDropdown<T>, T> {
+  @override
+  void initState() {
+    super.initState();
+    if (widget.selectedItem != null) {
+      didChange(widget.selectedItem);
+    }
+  }
+}
