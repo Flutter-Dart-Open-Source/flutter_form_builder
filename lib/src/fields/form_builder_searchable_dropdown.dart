@@ -258,8 +258,8 @@ class _FormBuilderSearchableDropdownState<T>
   @override
   void initState() {
     super.initState();
-    if (widget.initialValue != null) {
-      setValue(widget.initialValue);
+    if (widget.selectedItem != null) {
+      setValue(widget.selectedItem);
     }
   }
 }
