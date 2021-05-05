@@ -255,17 +255,11 @@ class FormBuilderSearchableDropdown<T> extends FormBuilderField<T> {
 
 class _FormBuilderSearchableDropdownState<T>
     extends FormBuilderFieldState<FormBuilderSearchableDropdown<T>, T> {
-  Object init;
-
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    init ??= () {
-      if (widget.selectedItem != null) {
-        didChange(widget.selectedItem);
-      }
-      return const Object();
-    }();
+  void initState() {
+    super.initState();
+    if (widget.initialValue != null) {
+      setValue(widget.initialValue);
+    }
   }
 }
