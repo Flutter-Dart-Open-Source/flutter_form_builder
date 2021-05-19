@@ -262,4 +262,13 @@ class _FormBuilderSearchableDropdownState<T>
       setValue(widget.selectedItem);
     }
   }
+
+  @override
+  void didUpdateWidget(FormBuilderSearchableDropdown<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print('-------');
+    if (oldWidget.selectedItem != widget.selectedItem) {
+      setValue(widget.selectedItem);
+    }
+  }
 }
