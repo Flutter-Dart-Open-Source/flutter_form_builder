@@ -7,10 +7,10 @@ class CodePage extends StatefulWidget {
   final String sourceFilePath;
 
   const CodePage({
-    Key key,
-    @required this.title,
-    @required this.child,
-    @required this.sourceFilePath,
+    Key? key,
+    required this.title,
+    required this.child,
+    required this.sourceFilePath,
   }) : super(key: key);
 
   @override

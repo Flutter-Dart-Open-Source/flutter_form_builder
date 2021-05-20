@@ -34,54 +34,54 @@ enum ColorPickerType { ColorPicker, MaterialPicker, BlockPicker }
 /// Creates a field for `Color` input selection
 class FormBuilderColorPickerField extends FormBuilderField<Color> {
   //TODO: Add documentation
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final ColorPickerType colorPickerType;
   final TextCapitalization textCapitalization;
 
   final TextAlign textAlign;
 
-  final TextInputType keyboardType;
-  final TextInputAction textInputAction;
-  final TextStyle style;
-  final StrutStyle strutStyle;
-  final TextDirection textDirection;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
+  final TextStyle? style;
+  final StrutStyle? strutStyle;
+  final TextDirection? textDirection;
   final bool autofocus;
 
   final bool obscureText;
   final bool autocorrect;
-  final MaxLengthEnforcement maxLengthEnforcement;
+  final MaxLengthEnforcement? maxLengthEnforcement;
 
   final int maxLines;
   final bool expands;
 
-  final bool showCursor;
-  final int minLines;
-  final int maxLength;
-  final VoidCallback onEditingComplete;
-  final ValueChanged<Color> onFieldSubmitted;
-  final List<TextInputFormatter> inputFormatters;
+  final bool? showCursor;
+  final int? minLines;
+  final int? maxLength;
+  final VoidCallback? onEditingComplete;
+  final ValueChanged<Color>? onFieldSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
   final double cursorWidth;
-  final Radius cursorRadius;
-  final Color cursorColor;
-  final Brightness keyboardAppearance;
+  final Radius? cursorRadius;
+  final Color? cursorColor;
+  final Brightness? keyboardAppearance;
   final EdgeInsets scrollPadding;
   final bool enableInteractiveSelection;
-  final InputCounterWidgetBuilder buildCounter;
+  final InputCounterWidgetBuilder? buildCounter;
 
   FormBuilderColorPickerField({
-    Key key,
-    @required String name,
-    Color initialValue,
-    FormFieldValidator<Color> validator,
+    Key? key,
+    required String name,
+    Color? initialValue,
+    FormFieldValidator<Color>? validator,
     bool enabled = true,
     AutovalidateMode autovalidateMode = AutovalidateMode.disabled,
-    ValueTransformer<Color> valueTransformer,
-    ValueChanged<Color> onChanged,
-    FormFieldSetter<Color> onSaved,
-    VoidCallback onReset,
+    ValueTransformer<Color>? valueTransformer,
+    ValueChanged<Color>? onChanged,
+    FormFieldSetter<Color>? onSaved,
+    VoidCallback? onReset,
     this.controller,
     InputDecoration decoration = const InputDecoration(),
-    FocusNode focusNode,
+    FocusNode? focusNode,
     bool readOnly = false,
     this.colorPickerType = ColorPickerType.ColorPicker,
     this.textCapitalization = TextCapitalization.none,
@@ -123,7 +123,7 @@ class FormBuilderColorPickerField extends FormBuilderField<Color> {
           onReset: onReset,
           decoration: decoration,
           focusNode: focusNode,
-          builder: (FormFieldState<Color> field) {
+          builder: (FormFieldState<Color?> field) {
             final state = field as _FormBuilderColorPickerFieldState;
             return TextField(
               style: style,
@@ -186,17 +186,17 @@ class FormBuilderColorPickerField extends FormBuilderField<Color> {
 
 class _FormBuilderColorPickerFieldState
     extends FormBuilderFieldState<FormBuilderColorPickerField, Color> {
-  TextEditingController _effectiveController;
+  late TextEditingController _effectiveController;
 
-  String get valueString => value?.toHex();
+  String? get valueString => value?.toHex();
 
-  Color _selectedColor;
+  Color? _selectedColor;
 
   @override
   void initState() {
     super.initState();
     _effectiveController = widget.controller ?? TextEditingController();
-    _effectiveController.text = valueString;
+    _effectiveController.text = valueString ?? '';
     effectiveFocusNode.addListener(_handleFocus);
   }
 
@@ -283,7 +283,7 @@ class _FormBuilderColorPickerFieldState
   }
 
   @override
-  void didChange(Color value) {
+  void didChange(Color? value) {
     super.didChange(value);
     _setTextFieldString();
   }

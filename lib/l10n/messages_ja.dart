@@ -19,20 +19,22 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ja';
 
-  static m4(value) => "${value}に一致していません。";
+  static String m4(dynamic value) => "${value}に一致していません。";
 
-  static m0(max) => "${max}以下にしてください。";
+  static String m0(dynamic max) => "${max}以下にしてください。";
 
-  static m1(maxLength) => "${maxLength}文字以下で入力してください。";
+  static String m1(dynamic maxLength) => "${maxLength}文字以下で入力してください。";
 
-  static m2(min) => "${min}以上にしてください。";
+  static String m2(dynamic min) => "${min}以上にしてください。";
 
-  static m3(minLength) => "${minLength}文字以上で入力してください。";
+  static String m3(dynamic minLength) => "${minLength}文字以上で入力してください。";
 
-  static m5(value) => "${value}と違うものにしてください。";
+  static String m5(dynamic value) => "${value}と違うものにしてください。";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function>{
+
+  static Map<String, Function> _notInlinedMessages(void _) =>
+      <String, Function>{
         "creditCardErrorText":
             MessageLookupByLibrary.simpleMessage("有効なクレジットカード番号を入力してください。"),
         "dateStringErrorText":

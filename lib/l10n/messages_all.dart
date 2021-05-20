@@ -26,7 +26,7 @@ import 'messages_pl.dart' as messages_pl;
 import 'messages_pt.dart' as messages_pt;
 import 'messages_sk.dart' as messages_sk;
 
-typedef Future<dynamic> LibraryLoader();
+typedef Future<void> LibraryLoader();
 Map<String, LibraryLoader> _deferredLibraries = {
   'de': () => new Future.value(null),
   'en': () => new Future.value(null),
@@ -40,7 +40,7 @@ Map<String, LibraryLoader> _deferredLibraries = {
   'pl': () => new Future.value(null),
 };
 
-MessageLookupByLibrary _findExact(String localeName) {
+MessageLookupByLibrary? _findExact(String localeName) {
   switch (localeName) {
     case 'de':
       return messages_de.messages;
@@ -90,7 +90,7 @@ bool _messagesExistFor(String locale) {
   }
 }
 
-MessageLookupByLibrary _findGeneratedMessagesFor(String locale) {
+MessageLookupByLibrary? _findGeneratedMessagesFor(String locale) {
   var actualLocale =
       Intl.verifiedLocale(locale, _messagesExistFor, onFailure: (_) => null);
   if (actualLocale == null) return null;

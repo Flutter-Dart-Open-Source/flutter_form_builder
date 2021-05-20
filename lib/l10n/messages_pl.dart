@@ -19,21 +19,25 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pl';
 
-  static m0(value) => "Wartość tego pola musi wynosić ${value}.";
+  static String m0(dynamic value) => "Wartość tego pola musi wynosić ${value}.";
 
-  static m1(max) => "Wartość musi być mniejsza lub równa ${max}.";
+  static String m1(dynamic max) =>
+      "Wartość musi być mniejsza lub równa ${max}.";
 
-  static m2(maxLength) => "Wartość nie może przekraczać ${maxLength} znaków.";
+  static String m2(dynamic maxLength) =>
+      "Wartość nie może przekraczać ${maxLength} znaków.";
 
-  static m3(min) => "Wartość musi być większa lub równa ${min}.";
+  static String m3(dynamic min) => "Wartość musi być większa lub równa ${min}.";
 
-  static m4(minLength) =>
+  static String m4(dynamic minLength) =>
       "Wartość musi wynosić co najmniej ${minLength} znaków.";
 
-  static m5(value) => "Wartość tego pola nie może być ${value}.";
+  static String m5(dynamic value) => "Wartość tego pola nie może być ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function>{
+
+  static Map<String, Function> _notInlinedMessages(void _) =>
+      <String, Function>{
         "creditCardErrorText": MessageLookupByLibrary.simpleMessage(
             "To pole wymaga podania ważnego numeru karty kredytowej."),
         "DateStringErrorText": MessageLookupByLibrary.simpleMessage(

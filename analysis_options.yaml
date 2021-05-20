@@ -1,8 +1,8 @@
-include: package:pedantic/analysis_options.yaml
+include: package:pedantic/analysis_options.1.11.0.yaml
 
 analyzer:
-  exclude:
-    - lib/l10n/**
+#  exclude:
+#    - lib/l10n/**
 
   language:
     strict-inference: true

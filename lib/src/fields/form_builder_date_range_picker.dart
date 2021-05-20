@@ -11,71 +11,72 @@ import 'package:intl/intl.dart' as intl;
 class FormBuilderDateRangePicker extends FormBuilderField<DateTimeRange> {
   //TODO: Add documentation
   final int maxLines;
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
   final bool obscureText;
-  final TextStyle style;
-  final TextEditingController controller;
+  final TextStyle? style;
+  final TextEditingController? controller;
   final TextCapitalization textCapitalization;
-  final TextInputAction textInputAction;
-  final StrutStyle strutStyle;
-  final TextDirection textDirection;
+  final TextInputAction? textInputAction;
+  final StrutStyle? strutStyle;
+  final TextDirection? textDirection;
   final TextAlign textAlign;
   final bool autofocus;
   final bool autocorrect;
-  final MaxLengthEnforcement maxLengthEnforcement;
-  final int maxLength;
-  final VoidCallback onEditingComplete;
-  final ValueChanged<List<DateTime>> onFieldSubmitted;
-  final List<TextInputFormatter> inputFormatters;
+  final MaxLengthEnforcement? maxLengthEnforcement;
+  final int? maxLength;
+  final VoidCallback? onEditingComplete;
+  final ValueChanged<List<DateTime>>? onFieldSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
   final double cursorWidth;
-  final Radius cursorRadius;
-  final Color cursorColor;
-  final Brightness keyboardAppearance;
+  final Radius? cursorRadius;
+  final Color? cursorColor;
+  final Brightness? keyboardAppearance;
   final EdgeInsets scrollPadding;
   final bool enableInteractiveSelection;
-  final InputCounterWidgetBuilder buildCounter;
+  final InputCounterWidgetBuilder? buildCounter;
   final bool expands;
-  final int minLines;
-  final bool showCursor;
+  final int? minLines;
+  final bool? showCursor;
   final DateTime firstDate;
   final DateTime lastDate;
-  final Locale locale;
-  final intl.DateFormat format;
-  final String cancelText; // widget.cancelText,
-  final String confirmText; // widget.confirmText,
-  final DateTime currentDate; // widget.currentDate,
-  final String errorFormatText; // widget.erroerrorFormatText,
-  final Widget Function(BuildContext, Widget) pickerBuilder; // widget.builder,
-  final String errorInvalidRangeText; // widget.errorInvalidRangeText,
-  final String errorInvalidText; // widget.errorInvalidText,
-  final String fieldEndHintText; // widget.fieldEndHintText,
-  final String fieldEndLabelText; // widget.fieldEndLabelText,
-  final String fieldStartHintText; // widget.fieldStartHintText,
-  final String fieldStartLabelText; // widget.fieldStartLabelText,
-  final String helpText; // widget.helpText,
+  final Locale? locale;
+  final intl.DateFormat? format;
+  final String? cancelText; // widget.cancelText,
+  final String? confirmText; // widget.confirmText,
+  final DateTime? currentDate; // widget.currentDate,
+  final String? errorFormatText; // widget.erroerrorFormatText,
+  final Widget Function(BuildContext, Widget?)?
+      pickerBuilder; // widget.builder,
+  final String? errorInvalidRangeText; // widget.errorInvalidRangeText,
+  final String? errorInvalidText; // widget.errorInvalidText,
+  final String? fieldEndHintText; // widget.fieldEndHintText,
+  final String? fieldEndLabelText; // widget.fieldEndLabelText,
+  final String? fieldStartHintText; // widget.fieldStartHintText,
+  final String? fieldStartLabelText; // widget.fieldStartLabelText,
+  final String? helpText; // widget.helpText,
   // final DateTimeRange initialDateRange; // widget.initialDateRange,
   final DatePickerEntryMode initialEntryMode; // widget.initialEntryMode,
-  final RouteSettings routeSettings; // widget.routeSettings,
-  final String saveText; // widget.saveText,
+  final RouteSettings? routeSettings; // widget.routeSettings,
+  final String? saveText; // widget.saveText,
   final bool useRootNavigator; // widget.useRootNavigator,
 
   /// Creates field for selecting a range of dates
   FormBuilderDateRangePicker({
-    Key key,
+    Key? key,
     //From Super
-    @required String name,
-    FormFieldValidator<DateTimeRange> validator,
-    DateTimeRange initialValue,
+    required String name,
+    FormFieldValidator<DateTimeRange>? validator,
+    DateTimeRange? initialValue,
     InputDecoration decoration = const InputDecoration(),
-    ValueChanged<DateTimeRange> onChanged,
-    ValueTransformer<DateTimeRange> valueTransformer,
+    ValueChanged<DateTimeRange>? onChanged,
+    ValueTransformer<DateTimeRange>? valueTransformer,
     bool enabled = true,
-    FormFieldSetter<DateTimeRange> onSaved,
+    FormFieldSetter<DateTimeRange>? onSaved,
     AutovalidateMode autovalidateMode = AutovalidateMode.disabled,
-    VoidCallback onReset,
-    FocusNode focusNode,
-    @required this.firstDate,
-    @required this.lastDate,
+    VoidCallback? onReset,
+    FocusNode? focusNode,
+    required this.firstDate,
+    required this.lastDate,
     this.format,
     this.maxLines = 1,
     this.obscureText = false,
@@ -135,7 +136,7 @@ class FormBuilderDateRangePicker extends FormBuilderField<DateTimeRange> {
           onReset: onReset,
           decoration: decoration,
           focusNode: focusNode,
-          builder: (FormFieldState<DateTimeRange> field) {
+          builder: (FormFieldState<DateTimeRange?> field) {
             final state = field as FormBuilderDateRangePickerState;
 
             return TextField(
@@ -178,7 +179,7 @@ class FormBuilderDateRangePicker extends FormBuilderField<DateTimeRange> {
   FormBuilderDateRangePickerState createState() =>
       FormBuilderDateRangePickerState();
 
-  static String tryFormat(DateTime date, intl.DateFormat format) {
+  static String tryFormat(DateTime? date, intl.DateFormat format) {
     if (date != null) {
       try {
         return format.format(date);
@@ -192,7 +193,7 @@ class FormBuilderDateRangePicker extends FormBuilderField<DateTimeRange> {
 
 class FormBuilderDateRangePickerState
     extends FormBuilderFieldState<FormBuilderDateRangePicker, DateTimeRange> {
-  TextEditingController _effectiveController;
+  late TextEditingController _effectiveController;
 
   @override
   void initState() {
@@ -256,10 +257,10 @@ class FormBuilderDateRangePickerState
       return '';
     }
 
-    return '${format(value.start)} - ${format(value.end)}';
+    return '${format(value!.start)} - ${format(value!.end)}';
   }
 
-  String format(DateTime date) => FormBuilderDateRangePicker.tryFormat(
+  String format(DateTime? date) => FormBuilderDateRangePicker.tryFormat(
       date, widget.format ?? intl.DateFormat.yMd());
 
   void _setTextFieldString() {
@@ -269,7 +270,7 @@ class FormBuilderDateRangePickerState
   }
 
   @override
-  void didChange(DateTimeRange value) {
+  void didChange(DateTimeRange? value) {
     super.didChange(value);
     _setTextFieldString();
   }

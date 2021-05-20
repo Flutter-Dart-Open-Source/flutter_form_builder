@@ -19,20 +19,25 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'de';
 
-  static m0(value) => "Dieser Feldwert muss ${value} gleich sein.";
+  static String m0(dynamic value) =>
+      "Dieser Feldwert muss ${value} gleich sein.";
 
-  static m1(max) => "Der Wert muss kleiner als oder gleich ${max} sein.";
+  static String m1(dynamic max) =>
+      "Der Wert muss kleiner als oder gleich ${max} sein.";
 
-  static m2(maxLength) =>
+  static String m2(dynamic maxLength) =>
       "Der Wert muss eine Länge kleiner als oder gleich ${maxLength} haben.";
 
-  static m3(min) => "Der Wert muss größer als oder gleich ${min} sein.";
+  static String m3(dynamic min) =>
+      "Der Wert muss größer als oder gleich ${min} sein.";
 
-  static m4(minLength) =>
+  static String m4(dynamic minLength) =>
       "Der Wert muss eine Länge größer als oder gleich ${minLength} haben.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function>{
+
+  static Map<String, Function> _notInlinedMessages(void _) =>
+      <String, Function>{
         "creditCardErrorText": MessageLookupByLibrary.simpleMessage(
             "Für dieses Feld ist eine gültige Kreditkartennummer erforderlich."),
         "dateStringErrorText": MessageLookupByLibrary.simpleMessage(

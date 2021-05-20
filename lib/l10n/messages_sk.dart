@@ -19,20 +19,26 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'sk';
 
-  static m4(value) => "Hodnota tohto poľa musí byť ${value}.";
+  static String m4(dynamic value) => "Hodnota tohto poľa musí byť ${value}.";
 
-  static m0(max) => "Hodnota musí byť menšia alebo rovná ako ${max}.";
+  static String m0(dynamic max) =>
+      "Hodnota musí byť menšia alebo rovná ako ${max}.";
 
-  static m1(maxLength) => "Hodnota musí mať dĺžku najviac ${maxLength} znakov.";
+  static String m1(dynamic maxLength) =>
+      "Hodnota musí mať dĺžku najviac ${maxLength} znakov.";
 
-  static m2(min) => "Hodnota musí byť väčšia alebo rovná ako ${min}.";
+  static String m2(dynamic min) =>
+      "Hodnota musí byť väčšia alebo rovná ako ${min}.";
 
-  static m3(minLength) => "Hodnota musí mať dĺžku aspoň ${minLength} znakov.";
+  static String m3(dynamic minLength) =>
+      "Hodnota musí mať dĺžku aspoň ${minLength} znakov.";
 
-  static m5(value) => "Hodnota tohto poľa nesmie byť ${value}.";
+  static String m5(dynamic value) => "Hodnota tohto poľa nesmie byť ${value}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function>{
+
+  static Map<String, Function> _notInlinedMessages(void _) =>
+      <String, Function>{
         "creditCardErrorText": MessageLookupByLibrary.simpleMessage(
             "Toto pole vyžaduje platné číslo platobnej karty."),
         "dateStringErrorText": MessageLookupByLibrary.simpleMessage(

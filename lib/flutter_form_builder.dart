@@ -16,7 +16,6 @@ export './src/fields/form_builder_dropdown.dart';
 export './src/fields/form_builder_filter_chips.dart';
 export './src/fields/form_builder_radio_group.dart';
 export './src/fields/form_builder_range_slider.dart';
-export './src/fields/form_builder_rating.dart';
 export './src/fields/form_builder_searchable_dropdown.dart';
 export './src/fields/form_builder_segmented_control.dart';
 export './src/fields/form_builder_signature_pad.dart';

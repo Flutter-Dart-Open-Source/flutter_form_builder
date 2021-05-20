@@ -96,6 +96,7 @@ class CompleteFormState extends State<CompleteForm> {
                     decoration: const InputDecoration(labelText: 'Pick Color'),
                   ),
                   FormBuilderChipsInput<Contact>(
+                    textOverflow: TextOverflow.fade,
                     decoration: const InputDecoration(labelText: 'Chips'),
                     name: 'chips_test',
                     onChanged: _onChanged,
@@ -251,7 +252,7 @@ class CompleteFormState extends State<CompleteForm> {
                     onChanged: (val) {
                       setState(() {
                         _ageHasError =
-                            !_formKey.currentState.fields['age'].validate();
+                            !_formKey.currentState!.fields['age']!.validate();
                       });
                     },
                     // valueTransformer: (text) => num.tryParse(text),
@@ -287,8 +288,9 @@ class CompleteFormState extends State<CompleteForm> {
                     onChanged: (val) {
                       print(val);
                       setState(() {
-                        _genderHasError =
-                            !_formKey.currentState.fields['gender'].validate();
+                        _genderHasError = !_formKey
+                            .currentState!.fields['gender']!
+                            .validate();
                       });
                     },
                   ),
@@ -371,15 +373,6 @@ class CompleteFormState extends State<CompleteForm> {
                     addIcon: const Icon(Icons.arrow_right),
                     subtractIcon: const Icon(Icons.arrow_left),
                   ),
-                  FormBuilderRating(
-                    decoration:
-                        const InputDecoration(labelText: 'Rate this form'),
-                    name: 'rate',
-                    iconSize: 32.0,
-                    initialValue: 1.0,
-                    max: 5.0,
-                    onChanged: _onChanged,
-                  ),
                   FormBuilderCheckboxGroup(
                     decoration: const InputDecoration(
                         labelText: 'The language of my people'),
@@ -417,10 +410,10 @@ class CompleteFormState extends State<CompleteForm> {
                   child: MaterialButton(
                     color: Theme.of(context).accentColor,
                     onPressed: () {
-                      if (_formKey.currentState.saveAndValidate()) {
-                        print(_formKey.currentState.value);
+                      if (_formKey.currentState!.saveAndValidate()) {
+                        print(_formKey.currentState!.value);
                       } else {
-                        print(_formKey.currentState.value);
+                        print(_formKey.currentState!.value);
                         print('validation failed');
                       }
                     },
@@ -434,7 +427,7 @@ class CompleteFormState extends State<CompleteForm> {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () {
-                      _formKey.currentState.reset();
+                      _formKey.currentState!.reset();
                     },
                     // color: Theme.of(context).accentColor,
                     child: Text(

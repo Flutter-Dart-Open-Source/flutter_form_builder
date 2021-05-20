@@ -10,7 +10,7 @@ class FormBuilderSearchableDropdown<T> extends FormBuilderField<T> {
   /// final List<DropdownMenuItem<T>> items;
 
   ///DropDownSearch hint
-  final String hint;
+  final String? hint;
 
   ///show/hide the search box
   final bool showSearchBox;
@@ -25,70 +25,70 @@ class FormBuilderSearchableDropdown<T> extends FormBuilderField<T> {
   final List<T> items;
 
   ///selected item
-  final T selectedItem;
+  final T? selectedItem;
 
   ///function that returns item from API
-  final dropdown_search.DropdownSearchOnFind<T> onFind;
+  final dropdown_search.DropdownSearchOnFind<T>? onFind;
 
   ///to customize list of items UI
-  final dropdown_search.DropdownSearchBuilder<T> dropdownBuilder;
+  final dropdown_search.DropdownSearchBuilder<T>? dropdownBuilder;
 
   ///to customize selected item
-  final dropdown_search.DropdownSearchPopupItemBuilder<T> popupItemBuilder;
+  final dropdown_search.DropdownSearchPopupItemBuilder<T>? popupItemBuilder;
 
   ///decoration for search box
-  final InputDecoration searchBoxDecoration;
+  final InputDecoration? searchBoxDecoration;
 
   ///the title for dialog/menu/bottomSheet
-  final Color popupBackgroundColor;
+  final Color? popupBackgroundColor;
 
   ///custom widget for the popup title
-  final Widget popupTitle;
+  final Widget? popupTitle;
 
   ///customize the fields the be shown
-  final dropdown_search.DropdownSearchItemAsString<T> itemAsString;
+  final dropdown_search.DropdownSearchItemAsString<T>? itemAsString;
 
   ///	custom filter function
-  final dropdown_search.DropdownSearchFilterFn<T> filterFn;
+  final dropdown_search.DropdownSearchFilterFn<T>? filterFn;
 
   ///MENU / DIALOG/ BOTTOM_SHEET
   final dropdown_search.Mode mode;
 
   ///the max height for dialog/bottomSheet/Menu
-  final double maxHeight;
+  final double? maxHeight;
 
   ///the max width for the dialog
-  final double dialogMaxWidth;
+  final double? dialogMaxWidth;
 
   ///select the selected item in the menu/dialog/bottomSheet of items
   final bool showSelectedItem;
 
   ///function that compares two object with the same type to detected if it's the selected item or not
-  final dropdown_search.DropdownSearchCompareFn<T> compareFn;
+  final dropdown_search.DropdownSearchCompareFn<T>? compareFn;
 
   ///custom layout for empty results
-  final EmptyBuilder emptyBuilder;
+  final EmptyBuilder? emptyBuilder;
 
   ///custom layout for loading items
-  final LoadingBuilder loadingBuilder;
+  final LoadingBuilder? loadingBuilder;
 
   ///custom layout for error
-  final dropdown_search.ErrorBuilder errorBuilder;
+  final dropdown_search.ErrorBuilder? errorBuilder;
 
   ///the search box will be focused if true
   final bool autoFocusSearchBox;
 
   ///custom shape for the popup
-  final ShapeBorder popupShape;
+  final ShapeBorder? popupShape;
 
   ///handle auto validation
   final bool autoValidate;
 
   ///custom dropdown clear button icon widget
-  final Widget clearButton;
+  final Widget? clearButton;
 
   ///custom dropdown icon button widget
-  final Widget dropDownButton;
+  final Widget? dropDownButton;
 
   ///If true, the dropdownBuilder will continue the uses of material behavior
   ///This will be useful if you want to handle a custom UI only if the item !=null
@@ -96,40 +96,40 @@ class FormBuilderSearchableDropdown<T> extends FormBuilderField<T> {
 
   ///defines if an item of the popup is enabled or not, if the item is disabled,
   ///it cannot be clicked
-  final dropdown_search.DropdownSearchPopupItemEnabled<T> popupItemDisabled;
+  final dropdown_search.DropdownSearchPopupItemEnabled<T>? popupItemDisabled;
 
   ///set a custom color for the popup barrier
-  final Color popupBarrierColor;
+  final Color? popupBarrierColor;
 
-  final String label;
-  final Widget Function(BuildContext) clearButtonBuilder;
-  final Widget Function(BuildContext) dropdownButtonBuilder;
-  final Widget Function(BuildContext, T) favoriteItemBuilder;
-  final List<T> Function(List<T>) favoriteItems;
-  final Future<bool> Function(T, T) onBeforeChange;
+  final String? label;
+  final Widget Function(BuildContext)? clearButtonBuilder;
+  final Widget Function(BuildContext)? dropdownButtonBuilder;
+  final Widget Function(BuildContext, T)? favoriteItemBuilder;
+  final List<T> Function(List<T>)? favoriteItems;
+  final Future<bool> Function(T?, T?)? onBeforeChange;
   final MainAxisAlignment favoriteItemsAlignment;
-  final void Function() onPopupDismissed;
-  final TextEditingController searchBoxController;
-  final Duration searchDelay;
+  final void Function()? onPopupDismissed;
+  final TextEditingController? searchBoxController;
+  final Duration? searchDelay;
   final bool showAsSuffixIcons;
   final bool showFavoriteItems;
 
   /// Creates field for selecting value(s) from a searchable list
   FormBuilderSearchableDropdown({
-    Key key,
+    Key? key,
     //From Super
-    @required String name,
-    FormFieldValidator<T> validator,
-    T initialValue,
+    required String name,
+    FormFieldValidator<T>? validator,
+    T? initialValue,
     InputDecoration decoration = const InputDecoration(),
-    ValueChanged<T> onChanged,
-    ValueTransformer<T> valueTransformer,
+    ValueChanged<T>? onChanged,
+    ValueTransformer<T>? valueTransformer,
     bool enabled = true,
-    FormFieldSetter<T> onSaved,
+    FormFieldSetter<T>? onSaved,
     AutovalidateMode autovalidateMode = AutovalidateMode.disabled,
-    VoidCallback onReset,
-    FocusNode focusNode,
-    @required this.items,
+    VoidCallback? onReset,
+    FocusNode? focusNode,
+    required this.items,
     this.autoValidate = false,
     this.mode = dropdown_search.Mode.MENU,
     this.hint,
@@ -184,7 +184,7 @@ class FormBuilderSearchableDropdown<T> extends FormBuilderField<T> {
           onReset: onReset,
           decoration: decoration,
           focusNode: focusNode,
-          builder: (FormFieldState<T> field) {
+          builder: (field) {
             final state = field as _FormBuilderSearchableDropdownState<T>;
 
             return InputDecorator(
@@ -266,7 +266,6 @@ class _FormBuilderSearchableDropdownState<T>
   @override
   void didUpdateWidget(FormBuilderSearchableDropdown<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    print('-------');
     if (oldWidget.selectedItem != widget.selectedItem) {
       setValue(widget.selectedItem);
     }

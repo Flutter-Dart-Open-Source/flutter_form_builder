@@ -25,24 +25,24 @@ class FormBuilderDateTimePicker extends FormBuilderField<DateTime> {
   /// For representing the date as a string e.g.
   /// `DateFormat("EEEE, MMMM d, yyyy 'at' h:mma")`
   /// (Sunday, June 3, 2018 at 9:24pm)
-  final DateFormat format;
+  final DateFormat? format;
 
   /// The date the calendar opens to when displayed. Defaults to the current date.
   ///
   /// To preset the widget's value, use [initialValue] instead.
-  final DateTime initialDate;
+  final DateTime? initialDate;
 
   /// The earliest choosable date. Defaults to 1900.
-  final DateTime firstDate;
+  final DateTime? firstDate;
 
   /// The latest choosable date. Defaults to 2100.
-  final DateTime lastDate;
+  final DateTime? lastDate;
 
-  final DateTime currentDate;
+  final DateTime? currentDate;
 
   /// The initial time prefilled in the picker dialog when it is shown. Defaults
   /// to noon. Explicitly set this to `null` to use the current time.
-  final TimeOfDay initialTime;
+  final TimeOfDay? initialTime;
 
   /// If defined, the TextField [decoration]'s [suffixIcon] will be
   /// overridden to reset the input using the icon defined here.
@@ -55,29 +55,29 @@ class FormBuilderDateTimePicker extends FormBuilderField<DateTime> {
 
   /// Corresponds to the [showDatePicker()] parameter. Defaults to
   /// [DatePickerMode.day].
-  final DatePickerMode initialDatePickerMode;
+  final DatePickerMode? initialDatePickerMode;
 
   /// Corresponds to the [showDatePicker()] parameter.
   ///
   /// See [GlobalMaterialLocalizations](https://docs.flutter.io/flutter/flutter_localizations/GlobalMaterialLocalizations-class.html)
   /// for acceptable values.
-  final Locale locale;
+  final Locale? locale;
 
   /// Corresponds to the [showDatePicker()] parameter.
-  final bool Function(DateTime) selectableDayPredicate;
+  final bool Function(DateTime)? selectableDayPredicate;
 
   /// Corresponds to the [showDatePicker()] parameter.
-  final ui.TextDirection textDirection;
+  final ui.TextDirection? textDirection;
 
   /// Corresponds to the [showDatePicker()] parameter.
   final bool useRootNavigator;
 
   /// Called when an enclosing form is submitted. The value passed will be
   /// `null` if [format] fails to parse the text.
-  final ValueChanged<DateTime> onFieldSubmitted;
-  final TextEditingController controller;
+  final ValueChanged<DateTime?>? onFieldSubmitted;
+  final TextEditingController? controller;
   final TextInputType keyboardType;
-  final TextStyle style;
+  final TextStyle? style;
   final TextAlign textAlign;
 
   /// Preset the widget's value.
@@ -86,43 +86,43 @@ class FormBuilderDateTimePicker extends FormBuilderField<DateTime> {
   final bool autocorrect;
   final MaxLengthEnforcement maxLengthEnforcement;
   final int maxLines;
-  final int maxLength;
-  final List<TextInputFormatter> inputFormatters;
-  final TransitionBuilder transitionBuilder;
+  final int? maxLength;
+  final List<TextInputFormatter>? inputFormatters;
+  final TransitionBuilder? transitionBuilder;
 
   /// Called when the time chooser dialog should be shown. In the future the
   /// preferred way of using this widget will be to utilize the [datePicker] and
   /// [timePicker] callback functions instead of adding their parameter list to
   /// this widget.
-  final Future<TimeOfDay> Function(BuildContext context) timePicker;
+  final Future<TimeOfDay> Function(BuildContext context)? timePicker;
 
   /// Called when the date chooser dialog should be shown. In the future the
   /// preferred way of using this widget will be to utilize the [datePicker] and
   /// [timePicker] callback functions instead of adding their parameter list to
   /// this widget.
-  final Future<DateTime> Function(BuildContext context) datePicker;
+  final Future<DateTime> Function(BuildContext context)? datePicker;
 
   /// Called whenever the state's value changes, e.g. after picker value(s)
   /// have been selected or when the field loses focus. To listen for all text
   /// changes, use the [controller] and [focusNode].
   // final ValueChanged<DateTime> onChanged;
 
-  final bool showCursor;
+  final bool? showCursor;
 
-  final int minLines;
+  final int? minLines;
 
   final bool expands;
 
-  final TextInputAction textInputAction;
+  final TextInputAction? textInputAction;
 
-  final VoidCallback onEditingComplete;
+  final VoidCallback? onEditingComplete;
 
-  final InputCounterWidgetBuilder buildCounter;
+  final InputCounterWidgetBuilder? buildCounter;
 
   // final VoidCallback onEditingComplete,
-  final Radius cursorRadius;
-  final Color cursorColor;
-  final Brightness keyboardAppearance;
+  final Radius? cursorRadius;
+  final Color? cursorColor;
+  final Brightness? keyboardAppearance;
   final EdgeInsets scrollPadding;
   final bool enableInteractiveSelection;
 
@@ -130,37 +130,37 @@ class FormBuilderDateTimePicker extends FormBuilderField<DateTime> {
   final TextCapitalization textCapitalization;
   final bool alwaysUse24HourFormat;
 
-  final String cancelText;
-  final String confirmText;
-  final String errorFormatText;
-  final String errorInvalidText;
-  final String fieldHintText;
-  final String fieldLabelText;
-  final String helpText;
+  final String? cancelText;
+  final String? confirmText;
+  final String? errorFormatText;
+  final String? errorInvalidText;
+  final String? fieldHintText;
+  final String? fieldLabelText;
+  final String? helpText;
   final DatePickerEntryMode initialEntryMode;
-  final RouteSettings routeSettings;
+  final RouteSettings? routeSettings;
 
   final PickerType pickerType;
-  final DateChangedCallback onConfirm;
-  final DateCancelledCallback onCancel;
-  final DatePickerTheme theme;
+  final DateChangedCallback? onConfirm;
+  final DateCancelledCallback? onCancel;
+  final DatePickerTheme? theme;
   final TimePickerEntryMode timePickerInitialEntryMode;
 
   /// Creates field for `Date`, `Time` and `DateTime` input
   FormBuilderDateTimePicker({
-    Key key,
+    Key? key,
     //From Super
-    @required String name,
-    FormFieldValidator<DateTime> validator,
-    DateTime initialValue,
+    required String name,
+    FormFieldValidator<DateTime>? validator,
+    DateTime? initialValue,
     InputDecoration decoration = const InputDecoration(),
-    ValueChanged<DateTime> onChanged,
-    ValueTransformer<DateTime> valueTransformer,
+    ValueChanged<DateTime>? onChanged,
+    ValueTransformer<DateTime>? valueTransformer,
     bool enabled = true,
-    FormFieldSetter<DateTime> onSaved,
+    FormFieldSetter<DateTime>? onSaved,
     AutovalidateMode autovalidateMode = AutovalidateMode.disabled,
-    VoidCallback onReset,
-    FocusNode focusNode,
+    VoidCallback? onReset,
+    FocusNode? focusNode,
     this.inputType = InputType.both,
     this.pickerType = PickerType.material,
     this.scrollPadding = const EdgeInsets.all(20.0),
@@ -174,7 +174,7 @@ class FormBuilderDateTimePicker extends FormBuilderField<DateTime> {
     this.obscureText = false,
     this.autocorrect = true,
     this.maxLines = 1,
-    this.maxLengthEnforcement,
+    this.maxLengthEnforcement = MaxLengthEnforcement.enforced,
     this.expands = false,
     this.format,
     this.firstDate,
@@ -233,7 +233,7 @@ class FormBuilderDateTimePicker extends FormBuilderField<DateTime> {
           onReset: onReset,
           decoration: decoration,
           focusNode: focusNode,
-          builder: (FormFieldState<DateTime> field) {
+    builder: (FormFieldState<DateTime?> field) {
             final state = field as _FormBuilderDateTimePickerState;
 
             return DateTimeField(
@@ -279,7 +279,7 @@ class FormBuilderDateTimePicker extends FormBuilderField<DateTime> {
           },
         );
 
-  final StrutStyle strutStyle;
+  final StrutStyle? strutStyle;
 
   @override
   _FormBuilderDateTimePickerState createState() =>
@@ -288,9 +288,9 @@ class FormBuilderDateTimePicker extends FormBuilderField<DateTime> {
 
 class _FormBuilderDateTimePickerState
     extends FormBuilderFieldState<FormBuilderDateTimePicker, DateTime> {
-  TextEditingController _textFieldController;
+  late TextEditingController _textFieldController;
 
-  DateFormat _dateFormat;
+  late DateFormat _dateFormat;
 
   @override
   void initState() {
@@ -340,10 +340,10 @@ class _FormBuilderDateTimePickerState
     );
   }
 
-  Future<DateTime> onShowPicker(
-      BuildContext context, DateTime currentValue) async {
+  Future<DateTime?> onShowPicker(
+      BuildContext context, DateTime? currentValue) async {
     currentValue = value;
-    DateTime newValue;
+    DateTime? newValue;
     switch (widget.inputType) {
       case InputType.date:
         newValue = await _showDatePicker(context, currentValue);
@@ -361,17 +361,16 @@ class _FormBuilderDateTimePickerState
         break;
       default:
         throw 'Unexpected input type ${widget.inputType}';
-        break;
     }
     final finalValue = newValue ?? currentValue;
     didChange(finalValue);
     return finalValue;
   }
 
-  Future<DateTime> _showDatePicker(
-      BuildContext context, DateTime currentValue) {
+  Future<DateTime?> _showDatePicker(
+      BuildContext context, DateTime? currentValue) {
     if (widget.datePicker != null) {
-      return widget.datePicker(context);
+      return widget.datePicker!(context);
     } else {
       if (widget.pickerType == PickerType.cupertino) {
         return DatePicker.showDatePicker(
@@ -404,7 +403,7 @@ class _FormBuilderDateTimePickerState
                     alwaysUse24HourFormat: widget.alwaysUse24HourFormat),
                 child: child,
               );
-            },
+            } as Widget Function(BuildContext, Widget?)?,
         cancelText: widget.cancelText,
         confirmText: widget.confirmText,
         errorFormatText: widget.errorFormatText,
@@ -419,10 +418,10 @@ class _FormBuilderDateTimePickerState
     }
   }
 
-  Future<TimeOfDay> _showTimePicker(
-      BuildContext context, DateTime currentValue) async {
+  Future<TimeOfDay?> _showTimePicker(
+      BuildContext context, DateTime? currentValue) async {
     if (widget.timePicker != null) {
-      return widget.timePicker(context);
+      return widget.timePicker!(context);
     } else {
       if (widget.pickerType == PickerType.cupertino) {
         final timePicker = widget.alwaysUse24HourFormat
@@ -456,7 +455,7 @@ class _FormBuilderDateTimePickerState
                 ),
                 child: child,
               );
-            },
+            } as Widget Function(BuildContext, Widget?)?,
         useRootNavigator: widget.useRootNavigator,
         routeSettings: widget.routeSettings,
         initialEntryMode: widget.timePickerInitialEntryMode,
@@ -470,7 +469,7 @@ class _FormBuilderDateTimePickerState
   }
 
   @override
-  void didChange(DateTime val) {
+  void didChange(DateTime? val) {
     super.didChange(val);
     _textFieldController.text = val == null ? '' : _dateFormat.format(val);
   }

@@ -11,10 +11,10 @@ class FormBuilderSignaturePad extends FormBuilderField<Uint8List> {
   /// Controls the value of the signature pad.
   ///
   /// If null, this widget will create its own [TextEditingController].
-  final SignatureController controller;
+  final SignatureController? controller;
 
   /// Width of the canvas
-  final double width;
+  final double? width;
 
   /// Height of the canvas
   final double height;
@@ -23,27 +23,27 @@ class FormBuilderSignaturePad extends FormBuilderField<Uint8List> {
   final Color backgroundColor;
 
   /// Text to be displayed on the clear button which clears user input from the canvas
-  final String clearButtonText;
+  final String? clearButtonText;
 
   /// Styles the canvas border
-  final Border border;
+  final Border? border;
 
   /// Creates field with drawing pad on which user can doodle
   FormBuilderSignaturePad({
-    Key key,
+    Key? key,
     //From Super
-    @required String name,
-    FormFieldValidator<Uint8List> validator,
-    Uint8List initialValue,
+    required String name,
+    FormFieldValidator<Uint8List>? validator,
+    Uint8List? initialValue,
     InputDecoration decoration = const InputDecoration(),
-    ValueChanged<Uint8List> onChanged,
-    ValueTransformer<Uint8List> valueTransformer,
+    ValueChanged<Uint8List>? onChanged,
+    ValueTransformer<Uint8List>? valueTransformer,
     bool enabled = true,
-    FormFieldSetter<Uint8List> onSaved,
+    FormFieldSetter<Uint8List>? onSaved,
     AutovalidateMode autovalidateMode = AutovalidateMode.disabled,
-    VoidCallback onReset,
-    FocusNode focusNode,
-    this.backgroundColor,
+    VoidCallback? onReset,
+    FocusNode? focusNode,
+    this.backgroundColor = Colors.grey,
     this.clearButtonText,
     this.width,
     this.height = 200,
@@ -62,7 +62,7 @@ class FormBuilderSignaturePad extends FormBuilderField<Uint8List> {
           onReset: onReset,
           decoration: decoration,
           focusNode: focusNode,
-          builder: (FormFieldState<Uint8List> field) {
+          builder: (FormFieldState<Uint8List?> field) {
             final state = field as _FormBuilderSignaturePadState;
             final theme = Theme.of(state.context);
             final localizations = MaterialLocalizations.of(state.context);
@@ -81,7 +81,7 @@ class FormBuilderSignaturePad extends FormBuilderField<Uint8List> {
                       image:
                           (null != initialValue && initialValue == state.value)
                               ? DecorationImage(
-                                  image: MemoryImage(state.value),
+                                  image: MemoryImage(state.value!),
                                 )
                               : null,
                     ),
@@ -129,7 +129,7 @@ class FormBuilderSignaturePad extends FormBuilderField<Uint8List> {
 
 class _FormBuilderSignaturePadState
     extends FormBuilderFieldState<FormBuilderSignaturePad, Uint8List> {
-  SignatureController _controller;
+  late SignatureController _controller;
 
   SignatureController get effectiveController => _controller;
 
@@ -142,13 +142,13 @@ class _FormBuilderSignaturePadState
       final _value = await _getControllerValue();
       didChange(_value);
     });
-    SchedulerBinding.instance.addPostFrameCallback((Duration duration) async {
+    SchedulerBinding.instance!.addPostFrameCallback((Duration duration) async {
       // Get initialValue or if points are set, use the  points
       didChange(initialValue ?? await _getControllerValue());
     });
   }
 
-  Future<Uint8List> _getControllerValue() async {
+  Future<Uint8List?> _getControllerValue() async {
     return await _controller.toImage() != null
         ? await _controller.toPngBytes()
         : null;
@@ -156,7 +156,6 @@ class _FormBuilderSignaturePadState
 
   @override
   void reset() {
-    assert(null != _controller);
     _controller.clear();
     super.reset();
   }

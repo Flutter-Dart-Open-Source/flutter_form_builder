@@ -29,7 +29,7 @@ class FormBuilderTouchSpin extends FormBuilderField<num> {
   final double iconSize;
 
   /// NumberFormat to be used when displaying values
-  final NumberFormat displayFormat;
+  final NumberFormat? displayFormat;
 
   /// Spacing around the decrement and increment icons
   final EdgeInsets iconPadding;
@@ -38,26 +38,26 @@ class FormBuilderTouchSpin extends FormBuilderField<num> {
   final TextStyle textStyle;
 
   /// Color of icon while the widget is in active state
-  final Color iconActiveColor;
+  final Color? iconActiveColor;
 
   /// Color of icon while the widget is in active state
-  final Color iconDisabledColor;
+  final Color? iconDisabledColor;
 
   /// Creates field for selection of a number by tapping on an add or subtract icon
   FormBuilderTouchSpin({
-    Key key,
+    Key? key,
     //From Super
-    @required String name,
-    FormFieldValidator<num> validator,
-    @required num initialValue,
+    required String name,
+    FormFieldValidator<num>? validator,
+    required num initialValue,
     InputDecoration decoration = const InputDecoration(),
-    ValueChanged<num> onChanged,
-    ValueTransformer<num> valueTransformer,
+    ValueChanged<num>? onChanged,
+    ValueTransformer<num>? valueTransformer,
     bool enabled = true,
-    FormFieldSetter<num> onSaved,
+    FormFieldSetter<num>? onSaved,
     AutovalidateMode autovalidateMode = AutovalidateMode.disabled,
-    VoidCallback onReset,
-    FocusNode focusNode,
+    VoidCallback? onReset,
+    FocusNode? focusNode,
     this.step = 1.0,
     this.min = 1.0,
     this.max = 9999999.0,
@@ -82,7 +82,7 @@ class FormBuilderTouchSpin extends FormBuilderField<num> {
           onReset: onReset,
           decoration: decoration,
           focusNode: focusNode,
-          builder: (FormFieldState<num> field) {
+          builder: (FormFieldState<num?> field) {
             final state = field as _FormBuilderTouchSpinState;
             final theme = Theme.of(state.context);
 
@@ -93,7 +93,7 @@ class FormBuilderTouchSpin extends FormBuilderField<num> {
                 min: min,
                 max: max,
                 step: step,
-                value: field.value,
+                value: field.value!,
                 iconSize: iconSize,
                 onChanged: state.enabled
                     ? (value) {

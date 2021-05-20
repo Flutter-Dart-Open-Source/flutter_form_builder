@@ -48,7 +48,7 @@ void main() {
     expect(formValue(textFieldName), equals(newTextValue));
 
     // await tester.enterText(widgetFinder, newTextValue);
-    testWidgetKey.currentState.didChange(initialTextValue);
+    testWidgetKey.currentState!.didChange(initialTextValue);
     expect(textEditingController.text, initialTextValue);
     expect(formSave(), isTrue);
     expect(formValue(textFieldName), equals(initialTextValue));
