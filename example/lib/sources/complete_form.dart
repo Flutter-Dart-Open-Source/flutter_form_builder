@@ -51,7 +51,7 @@ class CompleteFormState extends State<CompleteForm> {
                   const SizedBox(height: 15),
                   FormBuilderFilterChip(
                     name: 'filter_chip',
-                    enabled: false,
+                    enabled: true,
                     decoration: const InputDecoration(
                       labelText: 'Select many options',
                     ),
@@ -95,56 +95,6 @@ class CompleteFormState extends State<CompleteForm> {
                     colorPickerType: ColorPickerType.MaterialPicker,
                     decoration: const InputDecoration(labelText: 'Pick Color'),
                   ),
-                  FormBuilderChipsInput<Contact>(
-                    textOverflow: TextOverflow.fade,
-                    decoration: const InputDecoration(labelText: 'Chips'),
-                    name: 'chips_test',
-                    onChanged: _onChanged,
-                    maxChips: 5,
-                    findSuggestions: (String query) {
-                      if (query.isNotEmpty) {
-                        var lowercaseQuery = query.toLowerCase();
-                        return contacts.where((profile) {
-                          return profile.name
-                                  .toLowerCase()
-                                  .contains(query.toLowerCase()) ||
-                              profile.email
-                                  .toLowerCase()
-                                  .contains(query.toLowerCase());
-                        }).toList(growable: false)
-                          ..sort((a, b) => a.name
-                              .toLowerCase()
-                              .indexOf(lowercaseQuery)
-                              .compareTo(b.name
-                                  .toLowerCase()
-                                  .indexOf(lowercaseQuery)));
-                      } else {
-                        return const <Contact>[];
-                      }
-                    },
-                    chipBuilder: (context, state, profile) {
-                      return InputChip(
-                        key: ObjectKey(profile),
-                        label: Text(profile.name),
-                        avatar: CircleAvatar(
-                          backgroundImage: NetworkImage(profile.imageUrl),
-                        ),
-                        onDeleted: () => state.deleteChip(profile),
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      );
-                    },
-                    suggestionBuilder: (context, state, profile) {
-                      return ListTile(
-                        key: ObjectKey(profile),
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(profile.imageUrl),
-                        ),
-                        title: Text(profile.name),
-                        subtitle: Text(profile.email),
-                        onTap: () => state.selectSuggestion(profile),
-                      );
-                    },
-                  ),
                   FormBuilderDateTimePicker(
                     name: 'date',
                     initialValue: DateTime.now(),
@@ -153,7 +103,7 @@ class CompleteFormState extends State<CompleteForm> {
                       labelText: 'Appointment Time',
                     ),
                     initialTime: TimeOfDay(hour: 8, minute: 0),
-                    pickerType: PickerType.cupertino,
+                    pickerType: PickerType.material,
                     //locale: Locale.fromSubtags(languageCode: 'fr'),
                   ),
                   FormBuilderDateTimePicker(

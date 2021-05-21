@@ -397,13 +397,13 @@ class _FormBuilderDateTimePickerState
         textDirection: widget.textDirection,
         useRootNavigator: widget.useRootNavigator,
         builder: widget.transitionBuilder ??
-            (BuildContext context, Widget child) {
+            (context, child) {
               return MediaQuery(
                 data: MediaQuery.of(context).copyWith(
                     alwaysUse24HourFormat: widget.alwaysUse24HourFormat),
-                child: child,
+                child: child!,
               );
-            } as Widget Function(BuildContext, Widget?)?,
+            },
         cancelText: widget.cancelText,
         confirmText: widget.confirmText,
         errorFormatText: widget.errorFormatText,
@@ -448,14 +448,14 @@ class _FormBuilderDateTimePickerState
             ? TimeOfDay.fromDateTime(currentValue)
             : widget.initialTime ?? TimeOfDay.fromDateTime(DateTime.now()),
         builder: widget.transitionBuilder ??
-            (BuildContext context, Widget child) {
+            (context, child) {
               return MediaQuery(
                 data: MediaQuery.of(context).copyWith(
                   alwaysUse24HourFormat: widget.alwaysUse24HourFormat,
                 ),
-                child: child,
+                child: child!,
               );
-            } as Widget Function(BuildContext, Widget?)?,
+            },
         useRootNavigator: widget.useRootNavigator,
         routeSettings: widget.routeSettings,
         initialEntryMode: widget.timePickerInitialEntryMode,

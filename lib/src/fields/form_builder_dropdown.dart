@@ -189,7 +189,7 @@ class FormBuilderDropdown<T> extends FormBuilderField<T> {
     FormFieldValidator<T>? validator,
     T? initialValue,
     InputDecoration decoration = const InputDecoration(),
-    ValueChanged<T>? onChanged,
+    ValueChanged<T?>? onChanged,
     ValueTransformer<T>? valueTransformer,
     bool enabled = true,
     FormFieldSetter<T>? onSaved,
@@ -228,10 +228,8 @@ class FormBuilderDropdown<T> extends FormBuilderField<T> {
           onReset: onReset,
           decoration: decoration,
           focusNode: focusNode,
-          builder: (FormFieldState<T?> field) {
+          builder: (field) {
             final state = field as _FormBuilderDropdownState<T>;
-            // DropdownButtonFormField
-            // TextFormField
 
             void changeValue(T? value) {
               state.requestFocus();
