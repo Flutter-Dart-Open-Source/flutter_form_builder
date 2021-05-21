@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/l10n/messages_all.dart';
+import 'package:flutter_form_builder_hoc081098_patch/l10n/messages_all.dart';
 import 'package:intl/intl.dart';
 
 class FormBuilderLocalizations {

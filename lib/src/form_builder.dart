@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_form_builder_hoc081098_patch/flutter_form_builder_hoc081098_patch.dart';
 
 typedef ValueTransformer<T> = dynamic Function(T value);
 

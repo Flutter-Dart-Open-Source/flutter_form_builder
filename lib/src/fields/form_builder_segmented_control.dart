@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_form_builder_hoc081098_patch/flutter_form_builder_hoc081098_patch.dart';
 
 /// Field for selection of a value from the `CupertinoSegmentedControl`
 class FormBuilderSegmentedControl<T extends Object>

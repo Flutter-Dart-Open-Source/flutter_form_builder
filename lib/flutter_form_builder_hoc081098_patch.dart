@@ -1,4 +1,4 @@
-library flutter_form_builder;
+library flutter_form_builder_hoc081098_patch;
 
 export 'package:flutter_typeahead/flutter_typeahead.dart';
 export 'package:signature/signature.dart';

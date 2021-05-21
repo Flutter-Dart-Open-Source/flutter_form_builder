@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_form_builder_hoc081098_patch/flutter_form_builder_hoc081098_patch.dart';
 
 /// Test Harness for running Validations
 Future<void> testValidations(

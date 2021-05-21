@@ -1,3 +1,11 @@
+# Fork from https://github.com/danvick/flutter_form_builder
+
+## [5.1.-] - 21-May-2021
+
+* NNBD
+
+----
+
 ## [5.0.0] - 24-Mar-2020
 * Flutter 2.* support
 

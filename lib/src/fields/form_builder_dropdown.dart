@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_form_builder_hoc081098_patch/flutter_form_builder_hoc081098_patch.dart';
 
 /// Field for Dropdown button
 class FormBuilderDropdown<T> extends FormBuilderField<T> {
