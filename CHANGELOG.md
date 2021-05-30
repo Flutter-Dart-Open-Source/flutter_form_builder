@@ -1,6 +1,6 @@
 # Fork from https://github.com/danvick/flutter_form_builder
 
-## [5.1.0] - 30-May-2021
+## [5.2.0] - 30-May-2021
 
 * Fix FormBuilderSearchableDropdown decoration.
 
