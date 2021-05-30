@@ -47,6 +47,15 @@ class CompleteFormState extends State<CompleteForm> {
                     name: 'searchable_dropdown',
                     items: allCountries,
                     onChanged: _onChanged,
+                    decoration: InputDecoration(
+                      hintText: 'Select country',
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Colors.black12,
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 15),
                   FormBuilderFilterChip(

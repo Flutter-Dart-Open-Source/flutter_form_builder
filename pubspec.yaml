@@ -1,7 +1,7 @@
 name: flutter_form_builder_hoc081098_patch
 description: This package helps in creation of forms in Flutter by removing the boilerplate code, reusing validation, react to changes, and collect final user input.
-version: 5.1.0
-homepage: https://github.com/danvick/flutter_form_builder
+version: 5.2.0
+homepage: https://github.com/Flutter-Dart-Open-Source/flutter_form_builder/tree/hoc081098
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
