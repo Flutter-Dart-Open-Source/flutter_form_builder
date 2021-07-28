@@ -105,6 +105,7 @@ class FormBuilderFilterChip<T> extends FormBuilderField<List<T>> {
                 children: <Widget>[
                   for (FormBuilderFieldOption<T> option in options)
                     FilterChip(
+                      focusNode: state.effectiveFocusNode,
                       label: option,
                       selected: field.value!.contains(option.value),
                       onSelected: state.enabled &&

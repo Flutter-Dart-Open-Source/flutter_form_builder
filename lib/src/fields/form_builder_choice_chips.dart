@@ -306,6 +306,7 @@ class FormBuilderChoiceChip<T> extends FormBuilderField<T> {
                   children: <Widget>[
                     for (FormBuilderFieldOption<T> option in options)
                       ChoiceChip(
+                        focusNode: state.effectiveFocusNode,
                         label: option,
                         selected: field.value == option.value,
                         onSelected: state.enabled

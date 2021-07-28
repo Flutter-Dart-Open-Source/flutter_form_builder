@@ -75,38 +75,42 @@ class FormBuilderSegmentedControl<T extends Object>
             final state = field as _FormBuilderSegmentedControlState<T>;
             final theme = Theme.of(state.context);
 
-            return InputDecorator(
-              decoration: state.decoration(),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: CupertinoSegmentedControl<T>(
-                  borderColor: state.enabled
-                      ? borderColor ?? theme.primaryColor
-                      : theme.disabledColor,
-                  selectedColor: state.enabled
-                      ? selectedColor ?? theme.primaryColor
-                      : theme.disabledColor,
-                  pressedColor: state.enabled
-                      ? pressedColor ?? theme.primaryColor
-                      : theme.disabledColor,
-                  groupValue: state.value,
-                  children: <T, Widget>{
-                    for (final option in options)
-                      option.value: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: option,
-                      ),
-                  },
-                  padding: padding,
-                  unselectedColor: unselectedColor,
-                  onValueChanged: (value) {
-                    state.requestFocus();
-                    if (state.enabled) {
-                      field.didChange(value);
-                    } else {
-                      field.reset();
-                    }
-                  },
+            return Focus(
+              canRequestFocus: true,
+              focusNode: state.effectiveFocusNode,
+              child: InputDecorator(
+                decoration: state.decoration(),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: CupertinoSegmentedControl<T>(
+                    borderColor: state.enabled
+                        ? borderColor ?? theme.primaryColor
+                        : theme.disabledColor,
+                    selectedColor: state.enabled
+                        ? selectedColor ?? theme.primaryColor
+                        : theme.disabledColor,
+                    pressedColor: state.enabled
+                        ? pressedColor ?? theme.primaryColor
+                        : theme.disabledColor,
+                    groupValue: state.value,
+                    children: <T, Widget>{
+                      for (final option in options)
+                        option.value: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: option,
+                        ),
+                    },
+                    padding: padding,
+                    unselectedColor: unselectedColor,
+                    onValueChanged: (value) {
+                      state.requestFocus();
+                      if (state.enabled) {
+                        field.didChange(value);
+                      } else {
+                        field.reset();
+                      }
+                    },
+                  ),
                 ),
               ),
             );

@@ -74,35 +74,39 @@ class FormBuilderCheckboxGroup<T> extends FormBuilderField<List<T>> {
           builder: (field) {
             final state = field as _FormBuilderCheckboxGroupState<T>;
 
-            return InputDecorator(
-              decoration: state.decoration(),
-              child: GroupedCheckbox<T>(
-                orientation: orientation,
-                value: state.value,
-                options: options,
-                onChanged: (val) {
-                  state.requestFocus();
-                  field.didChange(val);
-                },
-                disabled: state.enabled
-                    ? disabled
-                    : options.map((e) => e.value).toList(),
-                activeColor: activeColor,
-                focusColor: focusColor,
-                checkColor: checkColor,
-                materialTapTargetSize: materialTapTargetSize,
-                hoverColor: hoverColor,
-                tristate: tristate,
-                wrapAlignment: wrapAlignment,
-                wrapCrossAxisAlignment: wrapCrossAxisAlignment,
-                wrapDirection: wrapDirection,
-                wrapRunAlignment: wrapRunAlignment,
-                wrapRunSpacing: wrapRunSpacing,
-                wrapSpacing: wrapSpacing,
-                wrapTextDirection: wrapTextDirection,
-                wrapVerticalDirection: wrapVerticalDirection,
-                separator: separator,
-                controlAffinity: controlAffinity,
+            return Focus(
+              canRequestFocus: true,
+              focusNode: state.effectiveFocusNode,
+              child: InputDecorator(
+                decoration: state.decoration(),
+                child: GroupedCheckbox<T>(
+                  orientation: orientation,
+                  value: state.value,
+                  options: options,
+                  onChanged: (val) {
+                    state.requestFocus();
+                    field.didChange(val);
+                  },
+                  disabled: state.enabled
+                      ? disabled
+                      : options.map((e) => e.value).toList(),
+                  activeColor: activeColor,
+                  focusColor: focusColor,
+                  checkColor: checkColor,
+                  materialTapTargetSize: materialTapTargetSize,
+                  hoverColor: hoverColor,
+                  tristate: tristate,
+                  wrapAlignment: wrapAlignment,
+                  wrapCrossAxisAlignment: wrapCrossAxisAlignment,
+                  wrapDirection: wrapDirection,
+                  wrapRunAlignment: wrapRunAlignment,
+                  wrapRunSpacing: wrapRunSpacing,
+                  wrapSpacing: wrapSpacing,
+                  wrapTextDirection: wrapTextDirection,
+                  wrapVerticalDirection: wrapVerticalDirection,
+                  separator: separator,
+                  controlAffinity: controlAffinity,
+                ),
               ),
             );
           },

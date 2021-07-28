@@ -150,56 +150,60 @@ class FormBuilderRangeSlider extends FormBuilderField<RangeValues> {
               final state = field as _FormBuilderRangeSliderState;
               final _numberFormat = numberFormat ?? NumberFormat.compact();
 
-              return InputDecorator(
-                decoration: state.decoration(),
-                child: Container(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      RangeSlider(
-                        values: field.value!,
-                        min: min,
-                        max: max,
-                        divisions: divisions,
-                        activeColor: activeColor,
-                        inactiveColor: inactiveColor,
-                        onChangeEnd: onChangeEnd,
-                        onChangeStart: onChangeStart,
-                        labels: labels,
-                        semanticFormatterCallback: semanticFormatterCallback,
-                        onChanged: state.enabled
-                            ? (values) {
-                                state.requestFocus();
-                                field.didChange(values);
-                              }
-                            : null,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          if (displayValues != DisplayValues.none &&
-                              displayValues != DisplayValues.current)
-                            Text(
-                              _numberFormat.format(min),
-                              style: minTextStyle ?? textStyle,
-                            ),
-                          const Spacer(),
-                          if (displayValues != DisplayValues.none &&
-                              displayValues != DisplayValues.minMax)
-                            Text(
-                              '${_numberFormat.format(field.value!.start)} - ${_numberFormat.format(field.value!.end)}',
-                              style: textStyle,
-                            ),
-                          const Spacer(),
-                          if (displayValues != DisplayValues.none &&
-                              displayValues != DisplayValues.current)
-                            Text(
-                              _numberFormat.format(max),
-                              style: maxTextStyle ?? textStyle,
-                            ),
-                        ],
-                      ),
-                    ],
+              return Focus(
+                canRequestFocus: true,
+                focusNode: state.effectiveFocusNode,
+                child: InputDecorator(
+                  decoration: state.decoration(),
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RangeSlider(
+                          values: field.value!,
+                          min: min,
+                          max: max,
+                          divisions: divisions,
+                          activeColor: activeColor,
+                          inactiveColor: inactiveColor,
+                          onChangeEnd: onChangeEnd,
+                          onChangeStart: onChangeStart,
+                          labels: labels,
+                          semanticFormatterCallback: semanticFormatterCallback,
+                          onChanged: state.enabled
+                              ? (values) {
+                                  state.requestFocus();
+                                  field.didChange(values);
+                                }
+                              : null,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            if (displayValues != DisplayValues.none &&
+                                displayValues != DisplayValues.current)
+                              Text(
+                                _numberFormat.format(min),
+                                style: minTextStyle ?? textStyle,
+                              ),
+                            const Spacer(),
+                            if (displayValues != DisplayValues.none &&
+                                displayValues != DisplayValues.minMax)
+                              Text(
+                                '${_numberFormat.format(field.value!.start)} - ${_numberFormat.format(field.value!.end)}',
+                                style: textStyle,
+                              ),
+                            const Spacer(),
+                            if (displayValues != DisplayValues.none &&
+                                displayValues != DisplayValues.current)
+                              Text(
+                                _numberFormat.format(max),
+                                style: maxTextStyle ?? textStyle,
+                              ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );

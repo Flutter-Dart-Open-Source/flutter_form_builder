@@ -70,33 +70,37 @@ class FormBuilderRadioGroup<T> extends FormBuilderField<T> {
           builder: (FormFieldState<T?> field) {
             final state = field as _FormBuilderRadioGroupState<T>;
 
-            return InputDecorator(
-              decoration: state.decoration(),
-              child: GroupedRadio<T>(
-                orientation: orientation,
-                value: state.value,
-                options: options,
-                onChanged: (val) {
-                  state.requestFocus();
-                  state.didChange(val);
-                },
-                disabled: state.enabled
-                    ? disabled
-                    : options.map((e) => e.value).toList(),
-                activeColor: activeColor,
-                focusColor: focusColor,
-                materialTapTargetSize: materialTapTargetSize,
-                hoverColor: hoverColor,
-                wrapAlignment: wrapAlignment,
-                wrapCrossAxisAlignment: wrapCrossAxisAlignment,
-                wrapDirection: wrapDirection,
-                wrapRunAlignment: wrapRunAlignment,
-                wrapRunSpacing: wrapRunSpacing,
-                wrapSpacing: wrapSpacing,
-                wrapTextDirection: wrapTextDirection,
-                wrapVerticalDirection: wrapVerticalDirection,
-                separator: separator,
-                controlAffinity: controlAffinity,
+            return Focus(
+              canRequestFocus: true,
+              focusNode: state.effectiveFocusNode,
+              child: InputDecorator(
+                decoration: state.decoration(),
+                child: GroupedRadio<T>(
+                  orientation: orientation,
+                  value: state.value,
+                  options: options,
+                  onChanged: (val) {
+                    state.requestFocus();
+                    state.didChange(val);
+                  },
+                  disabled: state.enabled
+                      ? disabled
+                      : options.map((e) => e.value).toList(),
+                  activeColor: activeColor,
+                  focusColor: focusColor,
+                  materialTapTargetSize: materialTapTargetSize,
+                  hoverColor: hoverColor,
+                  wrapAlignment: wrapAlignment,
+                  wrapCrossAxisAlignment: wrapCrossAxisAlignment,
+                  wrapDirection: wrapDirection,
+                  wrapRunAlignment: wrapRunAlignment,
+                  wrapRunSpacing: wrapRunSpacing,
+                  wrapSpacing: wrapSpacing,
+                  wrapTextDirection: wrapTextDirection,
+                  wrapVerticalDirection: wrapVerticalDirection,
+                  separator: separator,
+                  controlAffinity: controlAffinity,
+                ),
               ),
             );
           },
