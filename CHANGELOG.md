@@ -1,5 +1,9 @@
 # Fork from https://github.com/danvick/flutter_form_builder
 
+## [5.2.3] - 28-Jul-2021
+
+* Revert some dependencies.
+
 ## [5.2.2] - 28-Jul-2021
 
 * Fix: https://github.com/danvick/flutter_form_builder/pull/799.
