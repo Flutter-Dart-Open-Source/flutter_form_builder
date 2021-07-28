@@ -1,5 +1,10 @@
 # Fork from https://github.com/danvick/flutter_form_builder
 
+## [5.2.2] - 28-Jul-2021
+
+* Fix: https://github.com/danvick/flutter_form_builder/pull/799.
+* Update dependencies.
+
 ## [5.2.1] - 16-Jun-2021
 
 * Update `dropdown_search: ^0.6.3`.
